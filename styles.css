@@ -18,12 +18,13 @@ header {
 .header-top {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .display-number span {
-  margin-top: 150px;
-  height: 150px;
-  width: 150px;
+  margin-top: 100px;
+  height: 200px;
+  width: 200px;
   font-size: 60px;
   border-style: dashed;
   margin-right: auto;
@@ -31,6 +32,10 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+   border-style: groove;
+   border-width:10px;
+   border-radius: 5px;
+   border-color: black;
 }
 
 header .reset-btn {
@@ -42,17 +47,20 @@ header .reset-btn {
   background-color: #d1d5db;
 }
 
+
+
 header .reset-btn:hover {
   cursor: pointer;
   background-color: black;
   color: white;
 }
 
-header .between-amount {
-  height: 50px;
-  width: 200px;
+header .between {
+  margin-right: 90px;;
   text-align: center;
-  margin-right: 50px;
+  padding:10px;
+  font-size: 30px;
+  
 }
 
 h1 {
@@ -66,6 +74,7 @@ main {
   justify-content: center;
   gap: 150px;
   font-family: "Inter, sans-serif";
+  text-transform: uppercase;
 }
 
 .left-side {
@@ -103,6 +112,6 @@ main {
   flex-direction: column;
   gap: 40px;
   font-family: "Inter, sans-serif";
-
   font-size: 20px;
+  font-weight: 600;
 }

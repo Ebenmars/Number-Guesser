@@ -11,25 +11,20 @@
     <header>
         <div class="header-top">
         <h1>Guess A Number</h1>
-         <select class="between-amount">
-            <option value="20">Between 1 and 20</option>
-            <option value="50">Between 1 and 50</option>
-            <option value="100">Between 1 and 100</option>
-             <option value="1000">Between 1 and 1000</option>
-        </select>
+         <h6 class="between">Between 1 - 20<h6>
         <button class="reset-btn">Reset</button>
     </div>
-        <div class="display-number"><span>0</span></div>
+        <div class="display-number"><span id="number">?</span></div>
     </header>
     <main>
         <div class="left-side">
-            <input type="number" id="number-gussed">
+            <input type="number" id="number-guessed">
             <button class="check-btn" id="check-guess">Check Number</button>
         </div>
         <div class="right-side">
-            <p>Make A Guess</p>
-            <p>Attempts:<span> 5</span></p>
-            <p>Most Attempts:<span> 5</span></p>
+            <p id="right-or-wrong">Make A Guess</p>
+            <p>Attempts:<span id="attempts"> 0</span></p>
+            <p>Most Attempts:<span id="most-attempts"> 0</span></p>
         </div>
     </main>
     </div>
