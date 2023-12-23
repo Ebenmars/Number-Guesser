@@ -1,53 +1,67 @@
 "use strict";
-// message = 13;
-
-// // console.log(document.querySelector("#number").textContent);
-
-// document.querySelector("#number").textContent = 9;
-
-// document.querySelector("#number-gussed").value = 23;
-// console.log(document.querySelector("#number-gussed").value);
 
 const checkBtn = document.querySelector("#check-guess");
-let count = 1;
+let count = 0;
 
-let highScore = document.querySelector("#most-attempts");
+let randomNumber = Math.floor(Math.random(1) * 20);
 
-const randomNumber = Math.floor(Math.random() * 10);
-console.log(randomNumber);
 
-  let attempts = document.querySelector("#attempts");
+let attempts = document.querySelector("#attempts");
+
+let leastAttempts = 20;
 
 checkBtn.addEventListener("click", function () {
+  isMyNumber();
+});
+
+const resetBtn = document.querySelector("#reset-btn");
+
+resetBtn.addEventListener("click", function () {
+  randomNumber = Math.floor(Math.random(1) * 20);
+  isMyNumber();
+  document.querySelector("#number-guessed").value = "";
+  document.querySelector("#number").textContent = "?";
+  count = 0;
+  attempts.textContent = 0;
+  document.querySelector("#right-or-wrong").textContent = "Make A Guess";
+  document.querySelector(".container").style.backgroundColor = "#f5f5f5";
+});
+
+function isMyNumber() {
   let numberGuess = document.querySelector("#number-guessed").value;
 
-   if(!numberGuess) {
+  //if user does not enter a number
+  if (!numberGuess) {
     alert("Please enter a number");
+    //if user enters a number equal to the random number
   } else if (numberGuess == randomNumber) {
-    
+    count++;
+    document.querySelector(".container").style.backgroundColor = "#2dfe54";
+    document.querySelector(".display-number span").style.backgroundColor =
+      "white";
+
     document.querySelector("#right-or-wrong").textContent =
       "You Got It Right ✅!!";
-      document.querySelector("#number").textContent = randomNumber;
+    document.querySelector("#number").textContent = randomNumber;
+    if (count < leastAttempts) {
+      leastAttempts = count;
+    }
+    //if user enters a number greater than 20
   } else if (numberGuess > randomNumber) {
     count++;
-    if (count  < 12){
+    //if user enters a number greater than 20
+    if (count < 21) {
       document.querySelector("#right-or-wrong").textContent = "Too High!!";
+    } else {
+      document.querySelector("#right-or-wrong").textContent = "Game Over!!";
+      count = 0;
     }
-    else{
-        document.querySelector("#right-or-wrong").textContent =
-          "Wow Your Bad At This, Game Over!!";
-          count = 0;
-    }
-  } 
-  else{
+
+    //if user enters a number less than 20
+  } else {
     count++;
-     document.querySelector("#right-or-wrong").textContent = "Too Low!!";
-    
+    document.querySelector("#right-or-wrong").textContent = "Too Low!!";
   }
   attempts.textContent = count;
-
-
-});
-  highScore.textContent = attempts.value;
-
-
+  document.querySelector("#least-attempts").textContent = leastAttempts;
+}
